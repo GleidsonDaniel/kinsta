@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
-import { NavigationAction, StackActions } from "react-navigation";
+import { NavigationActions, StackActions } from "react-navigation";
 
 import { checkLogin, changeName } from "../actions/AuthActions";
 
 export class Preload extends Component {
     static navigationOptions = {
-        title: '',
+        title: 'Preload',
         header: null
     }
 
@@ -21,26 +21,25 @@ export class Preload extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.props.checkLogin()
-        }, 2000)
+        }, 500)
+    }
+
+    resetTo(route) {
+        const actionToDispatch = StackActions.reset({
+            index: 0,
+            key: null,
+            actions: [NavigationActions.navigate({ routeName: route })],
+        });
+        this.props.navigation.dispatch(actionToDispatch);
     }
 
     componentDidUpdate() {
         switch (this.props.auth.status) {
             case 0:
-                this.props.navigation.dispatch(StackActions.reset({
-                    index: 0,
-                    actions: [
-                        NavigationAction.navigate({ routerName: 'Login' })
-                    ]
-                }))
+                this.resetTo("Login")
                 break;
             case 1:
-                this.props.navigation.dispatch(StackActions.reset({
-                    index: 0,
-                    actions: [
-                        NavigationAction.navigate({ routerName: 'Home' })
-                    ]
-                }))
+                this.resetTo("Home")
                 break;
         }
     }

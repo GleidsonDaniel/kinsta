@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, ImageBackground, TextInput, TouchableOpacity, Image } from "react-native";
 import { connect } from "react-redux";
 
-export class Login extends Component {
+export class SignUp extends Component {
     static navigationOptions = {
         title: 'Login',
         header: null
@@ -11,7 +11,9 @@ export class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            name: '',
+            email: '',
+            password: ''
         };
     }
 
@@ -19,8 +21,8 @@ export class Login extends Component {
 
     }
 
-    signUp = () => {
-        this.props.navigation.navigate('SignUp');
+    signIn = () => {
+        this.props.navigation.goBack();
     }
 
     render() {
@@ -28,15 +30,16 @@ export class Login extends Component {
             <ImageBackground source={require('../assets/bg.jpg')} style={styles.container}>
                 <Image style={styles.logo} source={require('../assets/kinsta.png')} />
 
+                <TextInput style={styles.input} underlineColorAndroid={'transparent'} placeholderTextColor={'#FFFFFF'} placeholder="Digite seu nome" />
                 <TextInput style={styles.input} underlineColorAndroid={'transparent'} placeholderTextColor={'#FFFFFF'} placeholder="Digite seu e-mail" />
                 <TextInput style={styles.input} underlineColorAndroid={'transparent'} placeholderTextColor={'#FFFFFF'} placeholder="Digite sua senha" secureTextEntry={true} />
 
                 <TouchableOpacity onPress={() => { }} style={styles.actionButton} >
-                    <Text style={styles.actionButtontext}>Login</Text>
+                    <Text style={styles.actionButtontext}>Fazer cadastro</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={this.signUp} style={styles.signButton} >
-                    <Text style={styles.signButtonText}>Ainda não tem cadastro?{"\n"}Clique aqui</Text>
+                <TouchableOpacity onPress={this.signIn} style={styles.signButton} >
+                    <Text style={styles.signButtonText}>Já tem cadastro?{"\n"}Clique aqui</Text>
                 </TouchableOpacity>
 
             </ImageBackground>
@@ -104,6 +107,6 @@ const mapDispachToProps = {
 
 }
 
-const LoginConnect = connect(mapStateToProps, mapDispachToProps)(Login);
+const SignUpConnect = connect(mapStateToProps, mapDispachToProps)(SignUp);
 
-export default LoginConnect;
+export default SignUpConnect;

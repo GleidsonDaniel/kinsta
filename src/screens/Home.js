@@ -5,7 +5,7 @@ import { NavigationAction, StackActions } from "react-navigation";
 
 export class Home extends Component {
     static navigationOptions = {
-        title: 'Feed'
+        title: 'Home'
     }
 
     constructor(props) {

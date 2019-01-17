@@ -3,7 +3,7 @@ import ReduxThunk from "redux-thunk";
 
 import Reducers from "../reducers";
 
-import Reactotron from "./ReactotronConfig" // Comentar para subir o app
+import Reactotron from "./ReactotronConfig" // Comment to publish app
 
 if (__DEV__) {
     var store = Reactotron.createStore(Reducers, applyMiddleware(ReduxThunk));

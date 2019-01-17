@@ -3,6 +3,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import Preload from "../screens/Preload";
 import Home from "../screens/Home";
 import Login from "../screens/Login";
+import SignUp from "../screens/Signup";
 
 const AppNavigator = createStackNavigator({
     preload: {
@@ -13,7 +14,12 @@ const AppNavigator = createStackNavigator({
     },
     Login: {
         screen: Login
+    },
+    SignUp: {
+        screen: SignUp
     }
 });
 
-export default AppContainer = createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(AppNavigator);
+
+export default AppContainer;
